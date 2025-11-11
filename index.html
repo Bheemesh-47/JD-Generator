@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Job Info Table Generator</title>
+  <title>Ethnotech Job Info Table Generator</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
     body {
@@ -84,6 +84,18 @@
     #downloadBtn:hover {
       background: #146c43;
     }
+    #logo {
+      width: 160px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    #headerTitle {
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: 700;
+      color: #084298;
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
@@ -122,6 +134,8 @@
   </form>
 
   <div id="table-container">
+    <img id="logo" src="Logo Eth.png" alt="Ethnotech Academy Logo">
+    <div id="headerTitle">Ethnotech Academy – Job Information Summary</div>
     <table id="infoTable">
       <thead>
         <tr>
@@ -164,16 +178,16 @@
     });
 
     downloadBtn.addEventListener("click", () => {
-      // Hide the button before taking screenshot
+      // Hide download button temporarily
       downloadBtn.style.display = "none";
 
       html2canvas(document.getElementById("table-container")).then(canvas => {
         const link = document.createElement("a");
-        link.download = "Job_Info_Table.png";
-        link.href = canvas.toDataURL();
+        link.download = "Ethnotech_Job_Info.png";
+        link.href = canvas.toDataURL("image/png");
         link.click();
 
-        // Show the button again
+        // Restore button visibility
         downloadBtn.style.display = "inline-block";
       });
     });
