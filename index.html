@@ -58,6 +58,7 @@
       width: 90%;
       max-width: 700px;
       display: none;
+      position: relative;
     }
     table {
       width: 100%;
@@ -163,11 +164,17 @@
     });
 
     downloadBtn.addEventListener("click", () => {
+      // Hide the button before taking screenshot
+      downloadBtn.style.display = "none";
+
       html2canvas(document.getElementById("table-container")).then(canvas => {
         const link = document.createElement("a");
         link.download = "Job_Info_Table.png";
         link.href = canvas.toDataURL();
         link.click();
+
+        // Show the button again
+        downloadBtn.style.display = "inline-block";
       });
     });
   </script>
